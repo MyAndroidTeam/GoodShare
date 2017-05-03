@@ -1,4 +1,4 @@
-package com.example.goodshare.ui.fragment;
+package com.example.goodshare.ui.ui.fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,13 +41,18 @@ public class GoodsFragment extends Fragment {
     private MapView mapView;
     private BaiduMap baiduMap;
     private boolean isFirstLocate = true;
-
+    View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         SDKInitializer.initialize(getActivity().getApplicationContext());
-        View view = inflater.inflate(R.layout.baidu_map, container, false);
+
+        if (view != null) {
+            return view;
+        }
+
+        view = inflater.inflate(R.layout.baidu_map, container, false);
         mapView = (MapView) view.findViewById(R.id.bmapView);
         baiduMap = mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
@@ -112,6 +118,8 @@ public class GoodsFragment extends Fragment {
     private void navigteTo(BDLocation location) {
         if (isFirstLocate) {
             LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+            Log.d("gjg", "纬度："+String.valueOf(location.getLatitude()));
+            Log.d("gjg", "经度："+String.valueOf(location.getLongitude()));
             MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
             baiduMap.animateMapStatus(update);
             update = MapStatusUpdateFactory.zoomTo(16f);

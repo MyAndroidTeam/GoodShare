@@ -1,4 +1,4 @@
-package com.example.goodshare.ui.fragment;
+package com.example.goodshare.ui.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
