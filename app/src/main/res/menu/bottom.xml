@@ -8,12 +8,13 @@
         android:id="@+id/item_lib"
         android:icon="@mipmap/edit"
         android:title="发布" />
-    <item
+   <!-- <item
         android:id="@+id/item_find"
         android:icon="@mipmap/message"
-        android:title="消息" />
+        android:title="消息" />-->
     <item
         android:id="@+id/item_more"
         android:icon="@mipmap/my1"
         android:title="我的" />
+
 </menu>

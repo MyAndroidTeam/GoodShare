@@ -14,8 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.goodshare.adapter.ViewPagerAdapter;
-import com.example.goodshare.ui.fragment.BaseFragment;
-import com.example.goodshare.ui.fragment.GoodsFragment;
+import com.example.goodshare.ui.ui.fragment.BaseFragment;
+import com.example.goodshare.ui.ui.fragment.GoodsFragment;
+import com.example.goodshare.ui.ui.fragment.InformationFragment;
 import com.example.goodshare.util.BottomNavigationViewHelper;
 
 public class MainActivity extends AppCompatActivity
@@ -108,11 +109,13 @@ public class MainActivity extends AppCompatActivity
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new GoodsFragment());
+        InformationFragment informationFragment = new InformationFragment();
+        GoodsFragment goodsFragment = new GoodsFragment();
+        adapter.addFragment(goodsFragment);
         adapter.addFragment(BaseFragment.newInstance("发布"));
-        adapter.addFragment(BaseFragment.newInstance("消息"));
-        adapter.addFragment(BaseFragment.newInstance("我的"));
+        adapter.addFragment(informationFragment);
         viewPager.setAdapter(adapter);
+
     }
 
     @Override
